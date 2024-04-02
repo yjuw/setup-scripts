@@ -14,7 +14,7 @@ if [[ APT ]]; then
     sudo apt update -y && sudo apt install signal-desktop -y
     #discord
     wget -O discord.deb https://discord.com/api/download?platform=linux&format=deb
-    dpkg -i discord.deb -y
+    dpkg -i discord.deb
     #1password
     curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
     echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
