@@ -1,19 +1,18 @@
 on: push
   
 jobs:
-  fedora-test:
+  test-matrix:
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "fedora:39"]
+
     runs-on: ubuntu-latest
-    container: fedora:39
+    container: "${{matrix.os}}"
     steps:
-      - run: |
+      - name: Checkout
+        uses: actions/checkout@v4
+                
+      - name: Run Test
+        run: |
           sudo chmod +x setup.sh
           ./setup.sh
-  ubuntu-test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          sudo chmod +x setup.sh
-          ./setup.sh
-
-
-
