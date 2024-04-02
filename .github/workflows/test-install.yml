@@ -4,14 +4,14 @@ jobs:
   test-matrix:
     strategy:
       matrix:
-        os: ["ubuntu-latest", "fedora:39"]
+        os: ["ubuntu", "fedora:39"]
 
     runs-on: ubuntu-latest
     container: "${{matrix.os}}"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-                
+
       - name: Run Test
         run: |
           sudo chmod +x setup.sh

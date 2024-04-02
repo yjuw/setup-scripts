@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # determine package manager
-APT=$(which apt)
-DNF=$(which dnf)
+APT=$(cat /etc/os-release | grep ubuntu)
+DNF=$(cat /etc/os-release | grep fedora)
 
 if [[ APT ]]; then
     apt update && apt upgrade
