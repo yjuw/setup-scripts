@@ -7,7 +7,7 @@ DNF=$(cat /etc/os-release | grep fedora)
 if [[ $APT ]]; then
     apt update -y && apt upgrade -y
     apt install flatpak -y
-    apt install curl wget gpupg -y
+    apt install curl wget gnupg -y
     #signal
     # 1. Install our official public software signing key:
     wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
