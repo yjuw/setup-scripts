@@ -18,8 +18,8 @@ if [[ $APT ]]; then
     # 3. Update your package database and install Signal:
     apt update -y && apt install signal-desktop -y
     #discord
-    wget -O discord.deb https://discord.com/api/download?platform=linux&format=deb
-    dpkg -i discord.deb
+    flatpak install flathub com.discordapp.Discord -y
+    flatpak override --user --socket=wayland com.discordapp.Discord
     #1password
     curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
     echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | tee /etc/apt/sources.list.d/1password.list
@@ -29,7 +29,6 @@ if [[ $APT ]]; then
     curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
     apt update -y && apt install 1password -y
     #brave
-    apt install curl
     curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"| tee /etc/apt/sources.list.d/brave-browser-release.list
     apt update -y && apt install brave-browser -y
