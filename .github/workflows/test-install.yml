@@ -14,5 +14,5 @@ jobs:
 
       - name: Run Test
         run: |
-          sudo chmod +x setup.sh
+          chmod +x setup.sh
           ./setup.sh
