@@ -7,7 +7,7 @@ DNF=$(cat /etc/os-release | grep fedora)
 if [[ $APT ]]; then
     apt update -y && apt upgrade -y
     apt install flatpak -y
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepogi
     apt install curl wget gnupg -y
     #signal
     # 1. Install our official public software signing key:
@@ -47,6 +47,7 @@ elif [[ $DNF ]]; then
     #discord
     flatpak install flathub com.discordapp.Discord -y
     flatpak override --user --socket=wayland com.discordapp.Discord
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     #1password
     rpm --import https://downloads.1password.com/linux/keys/1password.asc
     sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
