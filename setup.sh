@@ -42,7 +42,7 @@ if [[ $APT ]]; then
 
 elif [[ $DNF ]]; then
     dnf upgrade -y
-    dnf install flatpak
+    dnf install flatpak wget -y
 
     #discord
     flatpak install flathub com.discordapp.Discord -y
