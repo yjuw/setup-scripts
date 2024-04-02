@@ -38,7 +38,7 @@ if [[ $APT ]]; then
     #pia
     wget -O pia.run https://installers.privateinternetaccess.com/download/pia-linux-3.5.7-08120.run
     chmod +x pia.run
-   ./pia.run --quiet --accept -nox11
+   ./pia.run --quiet --accept
 
 elif [[ $DNF ]]; then
     dnf upgrade -y
@@ -62,7 +62,7 @@ elif [[ $DNF ]]; then
     #pia
     wget -O pia.run https://installers.privateinternetaccess.com/download/pia-linux-3.5.7-08120.run
     chmod +x pia.run
-   ./pia.run --quite --accept -nox11
+   ./pia.run --quiet --accept
 
 else
     echo "need to add new block for package manager"
