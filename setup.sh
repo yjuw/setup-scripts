@@ -30,6 +30,10 @@ if [[ APT ]]; then
     sudo apt update -y && sudo apt install brave-browser -y
     #kdenlive
     flatpak install flathub org.kde.kdenlive -y
+    #pia
+    wget -O pia.run https://installers.privateinternetaccess.com/download/pia-linux-3.5.7-08120.run
+    chmod +x pia.run
+   ./pia.run --quite --accept -nox11
 
 elif [[ DNF ]]; then
     dnf upgrade -y
@@ -47,10 +51,12 @@ elif [[ DNF ]]; then
     sudo dnf install brave-browser -y
     # kdenlive
     flatpak install flathub org.kde.kdenlive -y
+    #pia
+    wget -O pia.run https://installers.privateinternetaccess.com/download/pia-linux-3.5.7-08120.run
+    chmod +x pia.run
+   ./pia.run --quite --accept -nox11
 
 else
-	echo "need to add new block for package manager"
-
-
+    echo "need to add new block for package manager"
 
 
