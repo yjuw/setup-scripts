@@ -7,6 +7,7 @@ DNF=$(cat /etc/os-release | grep fedora)
 if [[ $APT ]]; then
     apt update -y && apt upgrade -y
     apt install flatpak -y
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     apt install curl wget gnupg -y
     #signal
     # 1. Install our official public software signing key:
