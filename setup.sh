@@ -4,7 +4,7 @@
 APT=$(cat /etc/os-release | grep ubuntu)
 DNF=$(cat /etc/os-release | grep fedora)
 
-if [[ APT ]]; then
+if [[ $APT ]]; then
     apt update && apt upgrade
     #signal
     wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
@@ -35,7 +35,7 @@ if [[ APT ]]; then
     chmod +x pia.run
    ./pia.run --quite --accept -nox11
 
-elif [[ DNF ]]; then
+elif [[ $DNF ]]; then
     dnf upgrade -y
     #discord
     flatpak install flathub com.discordapp.Discord -y
@@ -58,5 +58,4 @@ elif [[ DNF ]]; then
 
 else
     echo "need to add new block for package manager"
-
-
+fi
