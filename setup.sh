@@ -5,7 +5,9 @@ APT=$(cat /etc/os-release | grep ubuntu)
 DNF=$(cat /etc/os-release | grep fedora)
 
 if [[ $APT ]]; then
-    apt update && apt upgrade
+    apt update -y && apt upgrade -y
+    apt install flatpak -y
+    apt install curl wget gpupg -y
     #signal
     wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
     cat signal-desktop-keyring.gpg | tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
@@ -37,6 +39,8 @@ if [[ $APT ]]; then
 
 elif [[ $DNF ]]; then
     dnf upgrade -y
+    dnf install flatpak
+
     #discord
     flatpak install flathub com.discordapp.Discord -y
     flatpak override --user --socket=wayland com.discordapp.Discord
