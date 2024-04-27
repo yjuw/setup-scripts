@@ -21,6 +21,11 @@ if [[ $APT ]]; then
     #discord
     sudo flatpak install flathub com.discordapp.Discord -y
     sudo flatpak override --user --socket=wayland com.discordapp.Discord
+
+    #obs
+    sudo add-apt-repository ppa:obsproject/obs-studio
+    sudo apt install obs-studio
+
     #1password
     curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
     echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | tee /etc/apt/sources.list.d/1password.list
@@ -44,6 +49,11 @@ elif [[ $DNF ]]; then
     sudo dnf upgrade -y
     sudo dnf install flatpak wget -y
 
+    # Signal
+    sudo dnf install snapd
+    sudo ln -s /var/lib/snapd/snap /snap
+    sudo snap install signal-desktop
+
     #discord
     sudo flatpak install flathub com.discordapp.Discord -y
     sudo flatpak override --user --socket=wayland com.discordapp.Discord
@@ -59,6 +69,8 @@ elif [[ $DNF ]]; then
     sudo dnf install brave-browser -y
     # kdenlive
     sudo flatpak install flathub org.kde.kdenlive -y
+    #obs
+    flatpak install flathub com.obsproject.Studio
     #pia
     wget -O pia.run https://installers.privateinternetaccess.com/download/pia-linux-3.5.7-08120.run
     sudo chmod +x pia.run
