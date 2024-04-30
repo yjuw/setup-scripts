@@ -48,12 +48,9 @@ if [[ $APT ]]; then
 elif [[ $DNF ]]; then
     sudo dnf upgrade -y
     sudo dnf install flatpak wget -y
-
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     # Signal
-    sudo dnf install snapd
-    sudo ln -s /var/lib/snapd/snap /snap
-    sudo snap install signal-desktop
-
+    flatpak install flathub org.signal.Signal
     #discord
     sudo flatpak install flathub com.discordapp.Discord -y
     sudo flatpak override --user --socket=wayland com.discordapp.Discord
